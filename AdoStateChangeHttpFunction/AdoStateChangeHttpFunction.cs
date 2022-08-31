@@ -45,9 +45,9 @@ namespace ADOStateChangeHTTPFunction
                 log.LogCritical(" Pat not found to process, exiting");
                 return new BadRequestObjectResult("Pat not found to process, exiting");
             }
-            //make sure processType is not empty, otherwise default to scrum
+            //make sure processType is not empty, otherwise default to agile
             string processType = System.Environment.GetEnvironmentVariable("ADO_PROCESS_TYPE", EnvironmentVariableTarget.Process);
-            processType = string.IsNullOrEmpty(processType) ? System.Environment.GetEnvironmentVariable("ADO_PROCESS_TYPE", EnvironmentVariableTarget.User) : "scrum";
+            processType = string.IsNullOrEmpty(processType) ? System.Environment.GetEnvironmentVariable("ADO_PROCESS_TYPE", EnvironmentVariableTarget.User) : "agile";
             log.LogInformation(" ProcessType:"+processType);
             //Parse request body as JObject
             JObject payload = JObject.Parse(requestBody);
